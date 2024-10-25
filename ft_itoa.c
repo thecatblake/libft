@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkaga     <k222ryousuke@gmail.com   >      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/23 11:43:49 by rkaga             #+#    #+#             */
+/*   Updated: 2024/10/23 12:06:56 by rkaga            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	get_digits(int n, int num)
+{
+	if (n == 0)
+		return (num);
+	return (get_digits(n / 10, num + 1));
+}
+
+void	set_digits(long n, int digits, char *out)
+{
+	if (digits > 0)
+	{
+		out[digits - 1] = n % 10 + '0';
+		set_digits(n / 10, digits - 1, out);
+	}
+}
+
+char	*ft_itoa(int n)
+{
+	int		digits;
+	char	*s;
+
+	digits = get_digits(n, 0);
+	s = (char *)ft_calloc(digits + 2, sizeof(char));
+	s[digits + 2 - 1] = 0;
+	if (n == 0)
+		return (ft_strdup("0"));
+	else if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n < 0)
+	{
+		s[0] = '-';
+		set_digits(n * -1, digits, s + 1);
+	}
+	else
+	{
+		set_digits(n, digits, s);
+		s[digits] = 0;
+	}
+	return (s);
+}
