@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*out;
 
 	out = ft_calloc(ft_strlen(s), sizeof(char));
+	if (out == NULL)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{

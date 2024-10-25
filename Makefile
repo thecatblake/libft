@@ -18,6 +18,7 @@ all: $(NAME)
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(BONUS_OBJS)
 
 fclean: clean
 	rm -r $(NAME)

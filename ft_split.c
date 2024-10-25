@@ -38,6 +38,8 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	num = find(s, c);
 	split = ft_calloc(num + 1, sizeof(char *));
+	if (split == NULL)
+		return (NULL);
 	while (i++ < num && *s)
 	{
 		k = 0;
@@ -50,9 +52,7 @@ char	**ft_split(char const *s, char c)
 		}
 		if (k == 0)
 			continue ;
-		split[i - 1] = ft_calloc(k + 1, sizeof(char));
-		ft_memcpy(split[i - 1], s - k, k);
-		split[i - 1][k] = 0;
+		split[i - 1] = ft_substr(s - k, 0, k);
 	}
 	return (split);
 }

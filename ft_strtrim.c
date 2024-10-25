@@ -43,6 +43,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		num++;
 	}
 	last = ft_strdup(s1);
+	if (last == NULL)
+		return (NULL);
 	last[len - num] = 0;
 	return (last);
 }
