@@ -28,6 +28,41 @@ size_t	find(char const *s, char c)
 	return (n);
 }
 
+int	skip_split(char **s, char c)
+{
+	size_t	k;
+	char	*s_;
+
+	s_ = *s;
+	k = 0;
+	while (*s_ && *s_ == c)
+		s_++;
+	while (*s_ && *s_ != c)
+	{
+		k++;
+		s_++;
+	}
+	*s = s_;
+	return (k);
+}
+
+void	free_split(char **split, size_t num)
+{
+	char	*head;
+	char	*t;
+	size_t	i;
+
+	head = *split;
+	i = 0;
+	while (i < num)
+	{
+		t = head + 1;
+		free(head);
+		head = t;
+	}
+	free(split);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
@@ -42,17 +77,12 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	while (i++ < num && *s)
 	{
-		k = 0;
-		while (*s && *s == c)
-			s++;
-		while (*s && *s != c)
-		{
-			k++;
-			s++;
-		}
+		k = skip_split((char **)&s, c);
 		if (k == 0)
 			continue ;
 		split[i - 1] = ft_substr(s - k, 0, k);
+		if (split[i - 1] == NULL)
+			free_split(split, i - 1);
 	}
 	return (split);
 }
