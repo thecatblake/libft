@@ -46,7 +46,7 @@ int	skip_split(char **s, char c)
 	return (k);
 }
 
-void	free_split(char **split, size_t num)
+void	*free_split(char **split, size_t num)
 {
 	char	*head;
 	char	*t;
@@ -61,6 +61,7 @@ void	free_split(char **split, size_t num)
 		head = t;
 	}
 	free(split);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -82,7 +83,7 @@ char	**ft_split(char const *s, char c)
 			continue ;
 		split[i - 1] = ft_substr(s - k, 0, k);
 		if (split[i - 1] == NULL)
-			free_split(split, i - 1);
+			return (free_split(split, i - 1));
 	}
 	return (split);
 }

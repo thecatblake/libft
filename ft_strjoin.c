@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len;
 
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	s = ft_calloc(len, sizeof(char));
+	s = (char *)malloc(len * sizeof(char));
 	if (s == NULL)
 		return (NULL);
 	ft_strlcat(s, s1, len);
