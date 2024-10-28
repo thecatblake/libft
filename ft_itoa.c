@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-int	get_digits(int n, int num)
+static int	get_digits(int n, int num)
 {
 	if (n == 0)
 		return (num);
 	return (get_digits(n / 10, num + 1));
 }
 
-void	set_digits(long n, int digits, char *out)
+static void	set_digits(long n, int digits, char *out)
 {
 	if (digits > 0)
 	{

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	find(char const c, char const *set)
+static char	find(char const c, char const *set)
 {
 	while (*set)
 	{
@@ -32,19 +32,24 @@ char	*ft_strtrim(char const *s1, char const *set)
 	num = 0;
 	len = ft_strlen(s1);
 	last = (char *)&s1[len - 1];
-	while (find(*s1, set))
+	if (ft_strlen(set) == 0)
+		return ft_strdup("");
+	while (find(*s1, set) && len - num > 0)
 	{
 		s1++;
 		num++;
 	}
-	while (find(*last, set))
+	while (find(*last, set) && len - num > 0)
 	{
 		last--;
 		num++;
 	}
-	last = ft_strdup(s1);
+	if (len - num <= 0)
+		return ft_strdup("");
+	last = malloc((len - num + 1) * sizeof(char));
 	if (last == NULL)
 		return (NULL);
+	ft_memcpy(last, s1, len - num);
 	last[len - num] = 0;
 	return (last);
 }

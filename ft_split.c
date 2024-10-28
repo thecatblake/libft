@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	find(char const *s, char c)
+static size_t	get_words(char const *s, char c)
 {
 	size_t	n;
 
@@ -72,7 +72,7 @@ char	**ft_split(char const *s, char c)
 	size_t	k;
 
 	i = 0;
-	num = find(s, c);
+	num = get_words(s, c);
 	split = ft_calloc(num + 1, sizeof(char *));
 	if (split == NULL)
 		return (NULL);

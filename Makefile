@@ -13,6 +13,10 @@ bonus: $(NAME) $(BONUS_OBJS)
 
 all: $(NAME)
 
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS)
+
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 

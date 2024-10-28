@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-long	ft_atoi_(const char *nptr, long num)
+static long	ft_atoi_(const char *nptr, long num)
 {
 	if (!ft_isdigit(*nptr))
 		return (num);
