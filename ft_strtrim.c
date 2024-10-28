@@ -34,7 +34,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	last = (char *)&s1[len - 1];
 	if (ft_strlen(set) == 0)
 		return (ft_strdup(s1));
-	while (find(*s1, set) && len - num > 0) 
+	while (find(*s1, set) && len - num > 0)
 	{
 		num++;
 		s1++;
