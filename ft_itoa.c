@@ -34,23 +34,24 @@ char	*ft_itoa(int n)
 	char	*s;
 
 	digits = get_digits(n, 0);
-	s = (char *)ft_calloc(digits + 2, sizeof(char));
-	if (s == NULL)
-		return (NULL);
-	s[digits + 2 - 1] = 0;
 	if (n == 0)
 		return (ft_strdup("0"));
 	else if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if (n < 0)
 	{
+		s = (char *)ft_calloc(digits + 2, sizeof(char));
+		if (s == NULL)
+			return (NULL);
 		s[0] = '-';
 		set_digits(n * -1, digits, s + 1);
 	}
 	else
 	{
+		s = (char *)ft_calloc(digits + 1, sizeof(char));
+		if (s == NULL)
+			return (NULL);
 		set_digits(n, digits, s);
-		s[digits] = 0;
 	}
 	return (s);
 }

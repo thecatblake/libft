@@ -15,14 +15,21 @@
 static size_t	get_words(char const *s, char c)
 {
 	size_t	n;
+	size_t	k;
 
 	n = 0;
 	while (*s)
 	{
 		while (*s && *s == c)
 			s++;
+		k = 0;
 		while (*s && *s != c)
+		{
+			k++;
 			s++;
+		}
+		if (k == 0)
+			continue ;
 		n++;
 	}
 	return (n);

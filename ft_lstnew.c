@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkaga     <k222ryousuke@gmail.com   >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:51:04 by rkaga             #+#    #+#             */
-/*   Updated: 2024/10/23 20:51:04 by rkaga            ###   ########.fr       */
+/*   Updated: 2024/10/26 17:52:04 by rkaga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_lstnew(void *content)
 {
-	t_list	*last;
+	t_list	*ptr;
 
-	last = ft_lstlast(new);
-	last->next = *lst;
-	*lst = new;
+	ptr = (t_list *)malloc(sizeof(t_list));
+	ptr->content = content;
+	ptr->next = 0;
+	return (ptr);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkaga     <k222ryousuke@gmail.com   >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	num;
+	t_list	*head;
+	t_list	*temp;
 
-	num = 0;
-	while (lst)
+	head = *lst;
+	while (head)
 	{
-		num++;
-		lst = lst->next;
+		temp = head->next;
+		del(head->content);
+		free(head);
+		head = temp;
 	}
-	return (num);
+	*lst = 0;
 }

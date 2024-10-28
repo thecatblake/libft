@@ -33,23 +33,19 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len = ft_strlen(s1);
 	last = (char *)&s1[len - 1];
 	if (ft_strlen(set) == 0)
-		return ft_strdup("");
-	while (find(*s1, set) && len - num > 0)
+		return (ft_strdup(s1));
+	while (find(*s1, set) && len - num > 0) 
 	{
+		num++;
 		s1++;
-		num++;
 	}
-	while (find(*last, set) && len - num > 0)
-	{
-		last--;
+	while (find(*last--, set) && len - num > 0)
 		num++;
-	}
 	if (len - num <= 0)
-		return ft_strdup("");
-	last = malloc((len - num + 1) * sizeof(char));
+		return (ft_strdup(""));
+	last = ft_calloc(len - num + 1, sizeof(char));
 	if (last == NULL)
 		return (NULL);
 	ft_memcpy(last, s1, len - num);
-	last[len - num] = 0;
 	return (last);
 }
