@@ -16,7 +16,7 @@ static long long	ft_atoi_(const char *nptr, long long num, int minus)
 {
 	if (!ft_isdigit(*nptr))
 		return (num);
-	if (minus && -num < (LLONG_MIN + (*nptr - '0')) / 10)
+	if (minus && -1 * num < (LLONG_MIN + (*nptr - '0')) / 10)
 		return (LLONG_MIN);
 	if (!minus && num > (LLONG_MAX - (*nptr - '0')) / 10)
 		return (LLONG_MAX);
