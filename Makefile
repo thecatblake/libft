@@ -9,7 +9,7 @@ BONUS_OBJS= $(BONUS_SRCS:.c=.o)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-bonus: $(NAME) $(BONUS_OBJS)
+bonus: $(OBJS) $(BONUS_OBJS)
 	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 all: $(NAME)
