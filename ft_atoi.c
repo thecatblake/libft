@@ -12,11 +12,15 @@
 
 #include "libft.h"
 
-static long	ft_atoi_(const char *nptr, long num)
+static long long	ft_atoi_(const char *nptr, long long num, int minus)
 {
 	if (!ft_isdigit(*nptr))
 		return (num);
-	return (ft_atoi_(nptr + 1, num * 10 + (*nptr - '0')));
+	if (minus && -num < (LLONG_MIN + (*nptr - '0')) / 10)
+		return (LLONG_MIN);
+	if (!minus && num > (LLONG_MAX - (*nptr - '0')) / 10)
+		return (LLONG_MAX);
+	return (ft_atoi_(nptr + 1, num * 10 + (*nptr - '0'), minus));
 }
 
 int	ft_atoi(const char *nptr)
@@ -26,6 +30,6 @@ int	ft_atoi(const char *nptr)
 	if (*nptr == '+')
 		nptr++;
 	else if (*nptr == '-')
-		return (-ft_atoi_(nptr + 1, 0));
-	return (ft_atoi_(nptr, 0));
+		return (-ft_atoi_(nptr + 1, 0, 1));
+	return (ft_atoi_(nptr, 0, 0));
 }

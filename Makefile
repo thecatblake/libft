@@ -10,6 +10,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 bonus: $(NAME) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 all: $(NAME)
 
@@ -25,3 +26,6 @@ fclean: clean
 
 re: fclean all
 	
+so: 
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(BONUS_SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONUS_OBJS)
