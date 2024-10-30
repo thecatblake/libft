@@ -14,11 +14,9 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		len;
 	t_list	*head;
 	t_list	*save;
 
-	len = ft_lstsize(lst);
 	head = ft_lstnew(f(lst->content));
 	save = head;
 	lst = lst->next;
