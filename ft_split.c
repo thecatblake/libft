@@ -35,7 +35,7 @@ static size_t	get_words(char const *s, char c)
 	return (n);
 }
 
-int	skip_split(char **s, char c)
+static int	skip_split(char **s, char c)
 {
 	size_t	k;
 	char	*s_;
@@ -53,7 +53,7 @@ int	skip_split(char **s, char c)
 	return (k);
 }
 
-void	*free_split(char **split, size_t num)
+static void	*free_split(char **split, size_t num)
 {
 	char	*head;
 	char	*t;
