@@ -12,24 +12,24 @@
 
 #include "libft.h"
 
-static void	*ft_memchr_(unsigned char *s, unsigned char c, size_t n)
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
+	unsigned char *s_;
+	unsigned char c_;
 	unsigned int	i;
 
+	s_ = (unsigned char*)s;
+	c_ = (unsigned char)c;
 	if (n == 0)
 		return (NULL);
 	i = 0;
-	while (s[i] != c && n > 1)
+	while (s_[i] != c_ && n > 1)
 	{
 		i++;
 		n--;
 	}
-	if (s[i] == c)
-		return ((void *)(s + i));
-	return (0);
-}
-
-void	*ft_memchr(const void *s, int c, size_t n)
-{
-	return (ft_memchr_((unsigned char *)s, (unsigned char)c, n));
+	if (s_[i] == c_)
+		return ((void *)(s_ + i));
+	return (NULL);
 }
