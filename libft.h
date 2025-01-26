@@ -15,6 +15,9 @@
 
 # include <limits.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <stdbool.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -68,5 +71,15 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+int	pf_putchar(char c);
+int	pf_putstr(char *s);
+int	pf_putpointer(void *p);
+int	pf_putnbr(long d);
+int	pf_puthexlow(unsigned long d);
+int	pf_puthexup(unsigned long d);
+int	pf_putpercent(void);
+
+int	ft_printf(const char *format, ...);
 
 #endif
